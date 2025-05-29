@@ -1,0 +1,9 @@
+CREATE TABLE cities (
+  city_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  city VARCHAR(50) NOT NULL,
+  country_id INT UNSIGNED NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (city_id),
+  KEY idx_fk_country_id (country_id),
+  CONSTRAINT fk_cities_countries FOREIGN KEY (country_id) REFERENCES countries (country_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
